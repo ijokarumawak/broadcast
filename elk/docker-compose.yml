@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  vouch:
+    image: voucher/vouch-proxy
+    volumes:
+      - ./vouch/config.yml:/config/config.yml
+      - ./vouch/entrypoint.sh:/entrypoint.sh
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.4.2
+    extra_hosts:
+      - "elk.cloudnativedays.jp:host-gateway"
+    volumes:
+      - ./kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
+      - /home/ubuntu/ssl/private:/etc/ssl/private
+
+  nginx:
+    hostname: nginx
+    image: openresty/openresty:alpine
+    depends_on:
+      - vouch
+      - kibana
+    ports:
+      - 80:80
+      - 443:443
+    extra_hosts:
+      - "elk.cloudnativedays.jp:host-gateway"
+    volumes:
+      - ./nginx:/etc/nginx
+      - /home/ubuntu/ssl/private:/etc/ssl/private
+      - ./web/:/usr/share/nginx/html/
+

@@ -1,0 +1,27 @@
+PUT _index_template/metrics-obs
+{
+  "index_patterns": [
+    "metrics-obs.*"
+  ],
+  "template": {
+    "settings": {
+      "index": {
+        "lifecycle": {
+          "name": "metrics-obs"
+        },
+        "number_of_replicas": "0"
+      }
+    }
+  },
+  "composed_of": [
+    "metrics-mappings",
+    "data-streams-mappings",
+    "metrics-settings"
+  ],
+  "priority": 200,
+  "version": 1,
+  "data_stream": {
+    "hidden": false,
+    "allow_custom_routing": false
+  }
+}

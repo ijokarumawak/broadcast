@@ -1,0 +1,2 @@
+simpleobsws
+elasticsearch[async]

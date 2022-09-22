@@ -1,0 +1,40 @@
+PUT _index_template/obs.latest
+{
+  "index_patterns": [
+    "obs.latest-*"
+  ],
+  "template": {
+    "settings": {
+      "index": {
+        "number_of_replicas": "0"
+      }
+    },
+    "mappings": {
+      "dynamic_templates": [
+        {
+          "strings_as_keyword": {
+            "mapping": {
+              "ignore_above": 1024,
+              "type": "keyword"
+            },
+            "match_mapping_type": "string"
+          }
+        }
+      ],
+      "properties": {
+        "@timestamp": {
+          "type": "date"
+        },
+        "data_stream": {
+          "type": "object",
+          "properties": {
+            "namespace": {
+              "type": "constant_keyword"
+            }
+          }
+        }
+      }
+    }
+  },
+  "composed_of": []
+}

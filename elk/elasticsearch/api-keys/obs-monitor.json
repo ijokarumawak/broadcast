@@ -1,0 +1,33 @@
+POST /_security/api_key
+{
+  "name": "obs-monitor",
+  "role_descriptors": {
+    "data-ingestion": {
+      "cluster": [
+        "monitor"
+      ],
+      "indices": [
+        {
+          "names": [
+            "obs.latest-*"
+          ],
+          "privileges": [
+            "index",
+            "write",
+            "auto_configure"
+          ]
+        },
+        {
+          "names": [
+            "metrics-obs.*"
+          ],
+          "privileges": [
+            "index",
+            "write",
+            "auto_configure"
+          ]
+        }
+      ]
+    }
+  }
+}

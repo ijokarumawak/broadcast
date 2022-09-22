@@ -1,0 +1,10 @@
+# Env contains sensitive values.
+.env
+
+# Configuration files should be generated from templates.
+nginx/conf.d
+vouch/config.yml
+kibana/kibana.yml
+
+out.log
+__pycache__
