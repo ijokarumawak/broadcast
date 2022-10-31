@@ -1,0 +1,25 @@
+POST /_security/api_key
+{
+  "name": "heartbeat",
+  "role_descriptors": {
+    "heartbeat_writer": {
+      "cluster": [
+        "monitor",
+        "read_ilm",
+        "read_pipeline"
+      ],
+      "indices": [
+        {
+          "names": [
+            "heartbeat-*"
+          ],
+          "privileges": [
+            "view_index_metadata",
+            "create_doc",
+            "auto_configure"
+          ]
+        }
+      ]
+    }
+  }
+  

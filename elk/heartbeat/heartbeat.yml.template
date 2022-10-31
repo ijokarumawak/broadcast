@@ -1,0 +1,43 @@
+heartbeat.monitors:
+- type: http
+  name: elk
+  schedule: '@every 30s'
+  urls:
+    - https://elk.cloudnativedays.jp
+
+- type: http
+  name: cndt2022
+  schedule: '@every 30s'
+  urls:
+    - https://event.cloudnativedays.jp/cndt2022
+
+
+- type: icmp
+  name: switchers
+  schedule: '@every 30s'
+  hosts:
+    - 'switcher01.cloudnativedays.jp'
+    - 'switcher02.cloudnativedays.jp'
+
+- type: icmp
+  name: nginx
+  schedule: '@every 30s'
+  hosts:
+    - 'nginx01.cloudnativedays.jp'
+
+- type: http
+  name: streamyard
+  schedule: '@every 1m'
+  urls:
+    - https://status.streamyard.com/api/v2/status.json
+  check.response:
+    status: [200, 304]
+    body:
+      - "All Systems Operational"
+
+processors:
+  - add_docker_metadata: ~
+
+output.elasticsearch:
+  hosts: ['https://elk.cloudnativedays.jp:9200']
+  api_key: '${HEARTBEAT_API_ID}:${HEARTBEAT_API_KEY}'

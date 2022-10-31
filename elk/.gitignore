@@ -5,6 +5,7 @@
 nginx/conf.d
 vouch/config.yml
 kibana/kibana.yml
+heartbeat/heartbeat.yml
 
 out.log
 __pycache__

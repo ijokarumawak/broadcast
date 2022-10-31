@@ -15,6 +15,11 @@ services:
       - ./kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
       - /home/ubuntu/ssl/private:/etc/ssl/private
 
+  heartbeat:
+    image: docker.elastic.co/beats/heartbeat:8.4.2
+    volumes:
+      - ./heartbeat/heartbeat.yml:/usr/share/heartbeat/heartbeat.yml
+
   nginx:
     hostname: nginx
     image: openresty/openresty:alpine

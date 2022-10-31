@@ -18,4 +18,9 @@ ${AUTH0_CLIENT_SECRET}
 
 envsubst '
 ${KIBANA_ES_SERVICE_ACCOUNT_TOKEN}
-' < kibana/kibana.yml.template > kibana/kibana.yml.test
+' < kibana/kibana.yml.template > kibana/kibana.yml
+
+envsubst '
+${HEARTBEAT_API_ID}
+${HEARTBEAT_API_KEY}
+' < heartbeat/heartbeat.yml.template > heartbeat/heartbeat.yml
