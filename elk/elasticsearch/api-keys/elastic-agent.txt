@@ -1,0 +1,25 @@
+POST /_security/api_key
+{
+  "name": "elastic-agent",
+  "role_descriptors": {
+    "standalone_agent": {
+      "cluster": [
+        "monitor"
+      ],
+      "indices": [
+        {
+          "names": [
+            "logs-*-*",
+            "metrics-*-*",
+            "traces-*-*",
+            "synthetics-*-*"
+          ],
+          "privileges": [
+            "auto_configure",
+            "create_doc"
+          ]
+        }
+      ]
+    }
+  }
+}
