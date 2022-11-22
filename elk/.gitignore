@@ -9,3 +9,5 @@ heartbeat/heartbeat.yml
 
 out.log
 __pycache__
+
+elastic-agent
