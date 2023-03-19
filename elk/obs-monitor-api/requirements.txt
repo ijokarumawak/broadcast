@@ -1,0 +1,4 @@
+simpleobsws
+elasticsearch[async]
+fastapi
+pyyaml
