@@ -68,6 +68,7 @@ async def startup():
     obs_config = track['obs']
     obs_monitor = ObsMonitor(host=obs_config['host'], port=obs_config['port'], password=obs_config['password'])
     obs[track['name']] = obs_monitor
+    print('Connecting to OBS for track {}. {}'.format(track['name'], obs_monitor))
     await obs_monitor.connect()
     print('Connected to OBS for track {}. {}'.format(track['name'], obs_monitor))
 

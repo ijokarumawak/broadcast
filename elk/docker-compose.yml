@@ -26,6 +26,8 @@ services:
     depends_on:
       - vouch
       - kibana
+      # Build ivs-monitor Docker image in advance.
+      - ivs-monitor
     ports:
       - 80:80
       - 443:443
@@ -35,4 +37,3 @@ services:
       - ./nginx:/etc/nginx
       - /home/ubuntu/ssl/private:/etc/ssl/private
       - ./web/:/usr/share/nginx/html/
-

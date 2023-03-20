@@ -1,5 +1,4 @@
 import simpleobsws
-import asyncio
 
 
 class ObsMonitor:

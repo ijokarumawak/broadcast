@@ -1,0 +1,16 @@
+tracks:
+  - name: A
+    obs:
+      host: ${OBS_WS_HOST_A}
+      port: ${OBS_WS_PORT_A}
+      password: '${OBS_WS_PASSWORD_A}'
+  - name: B
+    obs:
+      host: ${OBS_WS_HOST_B}
+      port: ${OBS_WS_PORT_B}
+      password: '${OBS_WS_PASSWORD_B}'
+  - name: C
+    obs:
+      host: ${OBS_WS_HOST_C}
+      port: ${OBS_WS_PORT_C}
+      password: '${OBS_WS_PASSWORD_C}'
